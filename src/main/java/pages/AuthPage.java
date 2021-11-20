@@ -1,9 +1,6 @@
 package pages;
 
-import com.codeborne.selenide.SelenideElement;
-import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
-import org.openqa.selenium.support.FindBy;
 
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.switchTo;
@@ -33,9 +30,11 @@ public class AuthPage {
         $(By.id("show_password")).click();
     }
 
-    public String getTextNegativeAuthAllert(){
+    public String getTextNegativeAuthAlert(){
         return switchTo().alert().getText();
     }
 
-
+    public void clickAlertOK(){
+        switchTo().alert().accept();
+    }
 }

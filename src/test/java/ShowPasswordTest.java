@@ -1,18 +1,19 @@
 import static com.codeborne.selenide.Selenide.*;
 
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
-import org.openqa.selenium.By;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import pages.AuthPage;
 
 
-public class PasswordTest {
+public class ShowPasswordTest {
 
-    @Before
+    @BeforeEach
     public void setUp() {
         open("https://lmslite47vr.demo.mirapolis.ru/mira");
     }
+
     /*
             Тест на отображение пароля
     */
@@ -22,8 +23,8 @@ public class PasswordTest {
         AuthPage authPage = new AuthPage();
         authPage.setPassword(valPassword);
         authPage.showPassword();
-        Assert.assertEquals(authPage.getPassword(),valPassword);
-        Assert.assertEquals(authPage.getPasswordType(),"text");
+        Assertions.assertEquals(authPage.getPassword(), valPassword);
+        Assertions.assertEquals(authPage.getPasswordType(), "text");
     }
 
     /*
@@ -37,17 +38,18 @@ public class PasswordTest {
         authPage.showPassword();
         authPage.showPassword();
         String passwordType = authPage.getPasswordType();
-        Assert.assertEquals(passwordType,"password");
+        Assertions.assertEquals(passwordType, "password");
     }
+
     /*
         Тест на скрытие пароля при первичном наборе
     */
     @Test
-    public void invisiblePasswordTestWithOutCLICK()  {
+    public void invisiblePasswordTestWithOutCLICK() {
         String valPassword = "adfsjdkfj";
         AuthPage authPage = new AuthPage();
         authPage.setPassword(valPassword);
         String passwordType = authPage.getPasswordType();
-        Assert.assertEquals(passwordType,"password");
+        Assertions.assertEquals(passwordType, "password");
     }
 }
